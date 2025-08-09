@@ -1,0 +1,20 @@
+services:
+  admin_uploader:
+    build:
+      context: ./
+    ports:
+      - "5050:5000"
+    environment:
+      - PG_DBNAME=mydatabase
+      - PG_USER=myuser
+      - PG_PASSWORD=mypassword
+      - PG_HOST=vectordb
+      - PG_PORT=5432
+      - EMBEDDING_ENDPOINT=http://ollama:11434/api/embeddings
+      - GLOBAL_COLLECTION_NAME=global_docs
+      - FLASK_SECRET_KEY=changeme
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      - vectordb
+      - ollama

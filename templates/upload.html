@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Upload — Global Context</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 40px; max-width: 600px; margin: auto; }
+        h1 { color: #333; }
+        form { margin-top: 20px; }
+        input[type=file], input[type=submit] {
+            display: block;
+            margin-top: 10px;
+            padding: 8px;
+        }
+        .flash { color: green; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Upload Document for Global RAG Context</h1>
+    
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="file">Choose a PDF document:</label>
+        <input type="file" name="file" id="file" required>
+        <input type="submit" value="Upload & Process">
+    </form>
+</body>
+</html>
