@@ -11,9 +11,17 @@ services:
       - PG_HOST=vectordb
       - PG_PORT=5432
       - EMBEDDING_ENDPOINT=http://ollama:11434/api/embeddings
+      - EMBEDDING_MODEL=nomic-embed-text:latest
       - GLOBAL_COLLECTION_NAME=global_docs
       - FLASK_SECRET_KEY=changeme
+      - ENABLE_OCR=1
+      - OCR_MIN_TEXT_CHARS=200
+      - OCR_DPI=300
+      - RAG_CHUNK_TOKENS=900
+      - RAG_CHUNK_OVERLAP=180
+      - RAG_MIN_CHARS=180
     volumes:
+      - ./:/app
       - ./uploads:/app/uploads
     depends_on:
       - vectordb

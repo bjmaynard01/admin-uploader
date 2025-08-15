@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y\
     libpoppler-cpp-dev \
     pkg-config \
     python3-dev \
+    tesseract-ocr \
     libmagic1 \
     && rm -rf /var/lib/apt/lists/*
 
